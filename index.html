@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>متى تنزل الرواتب؟ | عداد الرواتب والدعم في السعودية</title>
+
+  <meta name="description" content="تابع موعد نزول الرواتب السعودية وحساب المواطن والضمان الاجتماعي والتقاعد والدعم السكني. اعرف كم باقي على موعد الصرف باليوم والساعة والدقيقة.">
+
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#edf4ec">
+
+  <style>
+    :root {
+      --green: #557b62;
+      --green-dark: #365642;
+      --mint: #e2eee2;
+      --cream: #faf8f1;
+      --white: #ffffff;
+      --text: #293a30;
+      --muted: #778379;
+      --border: #e7ece4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Tahoma, Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    header {
+      padding: 22px 16px;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--green-dark);
+    }
+
+    .badge {
+      background: var(--mint);
+      color: var(--green-dark);
+      border-radius: 30px;
+      padding: 5px 12px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    main {
+      max-width: 1080px;
+      padding: 28px 16px 55px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 32px 16px 28px;
+      background: linear-gradient(135deg, #edf4e9, #f9f4e9);
+      border-radius: 28px;
+      margin-bottom: 28px;
+    }
+
+    .hero-icon {
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      color: var(--green-dark);
+      font-size: clamp(26px, 5vw, 39px);
+      line-height: 1.5;
+      margin: 5px 0 10px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto;
+      font-size: 15px;
+    }
+
+    .today {
+      margin-top: 18px;
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      margin: 30px 0 15px;
+      font-size: 22px;
+      color: var(--green-dark);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px 17px;
+      box-shadow: 0 5px 18px rgba(45, 70, 49, 0.035);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 13px;
+    }
+
+    .icon {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      background: #edf4e9;
+      border-radius: 16px;
+      font-size: 25px;
+      flex-shrink: 0;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 17px;
+      color: var(--green-dark);
+    }
+
+    .card .description {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 2px 0 0;
+    }
+
+    .countdown-label {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 5px;
+      margin: 9px 0 12px;
+    }
+
+    .time-box {
+      background: #f2f6ef;
+      border-radius: 11px;
+      padding: 8px 2px;
+      text-align: center;
+    }
+
+    .time-box strong {
+      display: block;
+      color: var(--green-dark);
+      font-size: 20px;
+      line-height: 1.5;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-box span {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .date {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .status {
+      display: inline-block;
+      align-self: flex-start;
+      border-radius: 20px;
+      background: #fff3dc;
+      color: #856327;
+      padding: 4px 9px;
+      font-size: 11px;
+      margin-top: 10px;
+    }
+
+    .personal {
+      margin-top: 32px;
+      background: #eaf2e7;
+      padding: 23px;
+      border-radius: 24px;
+    }
+
+    .personal h2 {
+      margin-top: 0;
+      color: var(--green-dark);
+      font-size: 21px;
+    }
+
+    .personal p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    input, button {
+      font: inherit;
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 150px;
+      border: 1px solid #d6e2d3;
+      background: white;
+      color: var(--text);
+    }
+
+    button {
+      border: none;
+      background: var(--green);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--green-dark);
+    }
+
+    #personalResult {
+      margin-top: 14px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .notice {
+      margin-top: 25px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .about {
+      margin-top: 32px;
+      background: white;
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .about h2 {
+      color: var(--green-dark);
+      font-size: 20px;
+    }
+
+    .about p {
+      font-size: 14px;
+      color: #66736a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+      background: white;
+    }
+
+    @media (max-width: 760px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .card {
+        padding: 14px 11px;
+        border-radius: 18px;
+      }
+
+      .card-top {
+        gap: 8px;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 21px;
+        border-radius: 13px;
+      }
+
+      .card h3 {
+        font-size: 14px;
+      }
+
+      .card .description {
+        font-size: 11px;
+      }
+
+      .time-box strong {
+        font-size: 16px;
+      }
+
+      .time-box span {
+        font-size: 9px;
+      }
+
+      .countdown {
+        gap: 3px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">🌿 موعدي | السعودية</div>
+    <span class="badge">🇸🇦 مواعيد الصرف</span>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-icon">💰</div>
+    <h1>متى تنزل الرواتب؟</h1>
+    <p>
+      كل مواعيد الرواتب والدعم في مكان واحد.
+      تابعي العد التنازلي واعرفي كم باقي على موعد الصرف القادم.
+    </p>
+    <div class="today" id="today"></div>
+  </section>
+
+  <h2 class="section-title">🌸 عداد مواعيد الصرف</h2>
+
+  <div class="cards" id="cards"></div>
+
+  <section class="personal">
+    <h2>🗓️ احسبي موعد راتبك بنفسك</h2>
+    <p>
+      إذا كان راتبك ينزل في يوم محدد من كل شهر،
+      اختاري اليوم وسنحسب الوقت المتبقي للموعد القادم.
+    </p>
+
+    <div class="form-row">
+      <input
+        type="number"
+        id="salaryDay"
+        min="1"
+        max="31"
+        placeholder="يوم نزول الراتب (1 - 31)"
+        aria-label="يوم نزول الراتب"
+      >
+      <button onclick="calculatePersonalSalary()">احسبي الموعد</button>
+    </div>
+
+    <div id="personalResult" aria-live="polite"></div>
+  </section>
+
+  <div class="notice">
+    <strong>📌 تنبيه مهم:</strong>
+    المواعيد المعروضة تحتاج إلى التحقق من الجهة الرسمية قبل الاعتماد عليها.
+    قد تتغير بعض مواعيد الصرف بسبب الإجازات أو القرارات الرسمية.
+    لن نعتبر الموعد مؤكدًا إلا بعد التحقق منه.
+  </div>
+
+  <section class="about">
+    <h2>عن موقع موعدي</h2>
+    <p>
+      موعدي موقع سعودي بسيط يساعدك على متابعة مواعيد الرواتب
+      وبرامج الدعم والمعاشات، ومعرفة الوقت المتبقي لموعد الصرف
+      من خلال عدادات تنازلية سهلة الاستخدام.
+    </p>
+    <p>
+      نهدف إلى جمع المواعيد في مكان واحد وتسهيل الوصول إليها،
+      مع الحرص على توضيح المواعيد المتوقعة والمواعيد الرسمية.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  موعدي © <span id="year"></span> — موقع معلوماتي مستقل.
+  لا يمثل أي جهة حكومية.
+</footer>
+
+<script>
+  /*
+    هذه مواعيد أولية قابلة للتعديل.
+    لا تعرض على أنها مواعيد رسمية قبل التحقق منها.
+    تاريخ كل بطاقة يجب مراجعته وتحديثه من المصدر الرسمي.
+  */
+
+  const events = [
+    {
+      name: "الراتب الحكومي",
+      icon: "💼",
+      description: "رواتب موظفي الدولة",
+      date: null,
+      note: "أضيفي موعد الصرف الرسمي"
+    },
+    {
+      name: "حساب المواطن",
+      icon: "🏦",
+      description: "موعد دعم حساب المواطن",
+      date: null,
+      note: "تحققي من موعد الدفعة"
+    },
+    {
+      name: "الضمان الاجتماعي",
+      icon: "🤍",
+      description: "موعد صرف الضمان",
+      date: null,
+      note: "تحققي من موعد الصرف"
+    },
+    {
+      name: "التقاعد والتأمينات",
+      icon: "👴",
+      description: "موعد المعاش التقاعدي",
+      date: null,
+      note: "تحققي من موعد المعاش"
+    },
+    {
+      name: "الدعم السكني",
+      icon: "🏠",
+      description: "موعد الدعم السكني",
+      date: null,
+      note: "تحققي من موعد الصرف"
+    },
+    {
+      name: "حافز",
+      icon: "🎁",
+      description: "برنامج دعم الباحثين عن عمل",
+      date: null,
+      note: "تحققي من حالة البرنامج"
+    }
+  ];
+
+  const numberFormat = new Intl.NumberFormat("ar-SA", {
+    minimumIntegerDigits: 2,
+    useGrouping: false
+  });
+
+  function formatNumber(number) {
+    return numberFormat.format(number);
+  }
+
+  function formatDate(date) {
+    return new Intl.DateTimeFormat("ar-SA", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "Asia/Riyadh"
+    }).format(date);
+  }
+
+  function getRemaining(target) {
+    return Math.max(0, target.getTime() - Date.now());
+  }
+
+  function renderCards() {
+    const container = document.getElementById("cards");
+
+    container.innerHTML = events.map((event, index) => `
+      <article class="card">
+        <div class="card-top">
+          <div class="icon">${event.icon}</div>
+          <div>
+            <h3>${event.name}</h3>
+            <p class="description">${event.description}</p>
+          </div>
+        </div>
+
+        <div class="countdown-label">الوقت المتبقي</div>
+
+        <div class="countdown" id="countdown-${index}">
+          <div class="time-box">
+            <strong>--</strong><span>يوم</span>
+          </div>
+          <div class="time-box">
+            <strong>--</strong><span>ساعة</span>
+          </div>
+          <div class="time-box">
+            <strong>--</strong><span>دقيقة</span>
+          </div>
+          <div class="time-box">
+            <strong>--</strong><span>ثانية</span>
+          </div>
+        </div>
+
+        <div class="date" id="date-${index}">
+          لم يُحدد موعد الصرف بعد
+        </div>
+
+        <span class="status" id="status-${index}">
+          يحتاج إلى التحقق
+        </span>
+      </article>
+    `).join("");
+  }
+
+  function updateCards() {
+    events.forEach((event, index) => {
+      const countdown = document.getElementById(`countdown-${index}`);
+      const dateElement = document.getElementById(`date-${index}`);
+      const statusElement = document.getElementById(`status-${index}`);
+
+      if (!event.date) {
+        countdown.innerHTML = `
+          <div class="time-box"><strong>--</strong><span>يوم</span></div>
+          <div class="time-box"><strong>--</strong><span>ساعة</span></div>
+          <div class="time-box"><strong>--</strong><span>دقيقة</span></div>
+          <div class="time-box"><strong>--</strong><span>ثانية</span></div>
+        `;
+
+        dateElement.textContent = event.note;
+        statusElement.textContent = "بانتظار الموعد الموثوق";
+        return;
+      }
+
+      const remaining = getRemaining(event.date);
+
+      if (remaining === 0) {
+        countdown.innerHTML = `
+          <div class="time-box"><strong>0</strong><span>يوم</span></div>
+          <div class="time-box"><strong>00</strong><span>ساعة</span></div>
+          <div class="time-box"><strong>00</strong><span>دقيقة</span></div>
+          <div class="time-box"><strong>00</strong><span>ثانية</span></div>
+        `;
+
+        dateElement.textContent = "وصل الموعد المحدد؛ حدّثي الموعد القادم.";
+        statusElement.textContent = "انتهى العد التنازلي";
+        return;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      countdown.innerHTML = `
+        <div class="time-box"><strong>${formatNumber(days)}</strong><span>يوم</span></div>
+        <div class="time-box"><strong>${formatNumber(hours)}</strong><span>ساعة</span></div>
+        <div class="time-box"><strong>${formatNumber(minutes)}</strong><span>دقيقة</span></div>
+        <div class="time-box"><strong>${formatNumber(seconds)}</strong><span>ثانية</span></div>
+      `;
+
+      dateElement.textContent = "الموعد المحدد: " + formatDate(event.date);
+      statusElement.textContent = "موعد يحتاج إلى مراجعة";
+    });
+  }
+
+  function calculatePersonalSalary() {
+    const input = document.getElementById("salaryDay");
+    const result = document.getElementById("personalResult");
+    const day = Number(input.value);
+
+    if (!Number.isInteger(day) || day < 1 || day > 31) {
+      result.textContent = "فضلاً، أدخلي يومًا صحيحًا من 1 إلى 31.";
+      return;
+    }
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const currentMonth = now.getMonth();
+    const currentDay = now.getDate();
+
+    let year = currentYear;
+    let month = currentMonth;
+
+    if (currentDay > day) {
+      month += 1;
+    }
+
+    if (month > 11) {
+      month = 0;
+      year += 1;
+    }
+
+    // إذا كان الشهر أقصر من اليوم المختار، نستخدم آخر يوم فيه.
+    const targetDay = Math.min(
+      day,
+      new Date(year, month + 1, 0).getDate()
+    );
+
+    const target = new Date(year, month, targetDay, 0, 0, 0);
+    const remaining = getRemaining(target);
+    const days = Math.ceil(remaining / 86400000);
+
+    result.textContent =
+      "موعدك القادم: " + formatDate(target) +
+      " — المتبقي تقريبًا " + days + " يوم.";
+  }
+
+  function updateToday() {
+    const now = new Date();
+
+    document.getElementById("today").textContent =
+      "اليوم: " +
+      new Intl.DateTimeFormat("ar-SA", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone: "Asia/Riyadh"
+      }).format(now);
+  }
+
+  renderCards();
+  updateCards();
+  updateToday();
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+  setInterval(updateCards, 1000);
+  setInterval(updateToday, 60000);
+</script>
+
+</body>
+</html>
